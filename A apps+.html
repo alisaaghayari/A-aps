@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Apps - Premium App Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .app-button {
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .app-button:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .typing-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #6b7280;
+            animation: typing 1.4s infinite ease-in-out;
+        }
+        
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        
+        @keyframes typing {
+            0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Responsive improvements */
+        @media (max-width: 640px) {
+            .app-button {
+                padding: 1rem;
+            }
+            .app-button h3 {
+                font-size: 1rem;
+            }
+            .app-button p {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen">
+    <!-- Header -->
+    <header class="text-center py-8 sm:py-12">
+        <div class="floating-animation">
+            <h1 class="text-4xl sm:text-6xl font-bold text-white mb-4">A Apps</h1>
+            <p class="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto px-4">
+                مجموعه کاملی از اپلیکیشن‌های کاربردی و زیبا برای تجربه دیجیتال بهتر
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 sm:px-6 pb-16">
+        <!-- Apps Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-6 max-w-7xl mx-auto">
+            <!-- App Button 1 - AI Assistant -->
+            <button class="app-button rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center group" onclick="openAIApp()">
+                <div class="text-3xl sm:text-4xl mb-2 sm:mb-4 group-hover:scale-110 transition-transform duration-300">🤖</div>
+                <h3 class="text-white font-semibold text-sm sm:text-lg mb-1 sm:mb-2">دستیار هوشمند</h3>
+                <p class="text-white/70 text-xs sm:text-sm">چت با هوش مصنوعی</p>
+            </button>
+
+            <!-- App Button 2 - Music Player -->
+            <button class="app-button rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center group" onclick="openMusicApp()">
+                <div class="text-3xl sm:text-4xl mb-2 sm:mb-4 group-hover:scale-110 transition-transform duration-300">🎵</div>
+                <h3 class="text-white font-semibold text-sm sm:text-lg mb-1 sm:mb-2">موزیک پلیر</h3>
+                <p class="text-white/70 text-xs sm:text-sm">پخش موسیقی محبوب</p>
+            </button>
+
+            <!-- App Button 3 - Task Manager -->
+            <button class="app-button rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center group" onclick="openTaskApp()">
+                <div class="text-3xl sm:text-4xl mb-2 sm:mb-4 group-hover:scale-110 transition-transform duration-300">✅</div>
+                <h3 class="text-white font-semibold text-sm sm:text-lg mb-1 sm:mb-2">مدیریت وظایف</h3>
+                <p class="text-white/70 text-xs sm:text-sm">سازماندهی کارها</p>
+            </button>
+
+            <!-- App Button 4 - Weather App -->
+            <button class="app-button rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center group" onclick="openWeatherApp()">
+                <div class="text-3xl sm:text-4xl mb-2 sm:mb-4 group-hover:scale-110 transition-transform duration-300">🌤️</div>
+                <h3 class="text-white font-semibold text-sm sm:text-lg mb-1 sm:mb-2">آب و هوا</h3>
+                <p class="text-white/70 text-xs sm:text-sm">پیش‌بینی هوا</p>
+            </button>
+
+            <!-- App Button 5 - Calculator -->
+            <button class="app-button rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center group" onclick="openCalculatorApp()">
+                <div class="text-3xl sm:text-4xl mb-2 sm:mb-4 group-hover:scale-110 transition-transform duration-300">🧮</div>
+                <h3 class="text-white font-semibold text-sm sm:text-lg mb-1 sm:mb-2">ماشین حساب</h3>
+                <p class="text-white/70 text-xs sm:text-sm">محاسبات سریع</p>
+            </button>
+
+            <!-- App Button 6 - Notes App -->
+            <button class="app-button rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center group" onclick="openNotesApp()">
+                <div class="text-3xl sm:text-4xl mb-2 sm:mb-4 group-hover:scale-110 transition-transform duration-300">📝</div>
+                <h3 class="text-white font-semibold text-sm sm:text-lg mb-1 sm:mb-2">یادداشت</h3>
+                <p class="text-white/70 text-xs sm:text-sm">نوشتن و ذخیره</p>
+            </button>
+
+            <!-- App Button 7 - File Manager -->
+            <button class="app-button rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center group" onclick="openFileApp()">
+                <div class="text-3xl sm:text-4xl mb-2 sm:mb-4 group-hover:scale-110 transition-transform duration-300">📁</div>
+                <h3 class="text-white font-semibold text-sm sm:text-lg mb-1 sm:mb-2">مدیر فایل</h3>
+                <p class="text-white/70 text-xs sm:text-sm">مدیریت فایل‌ها</p>
+            </button>
+
+            <!-- App Button 8 - Calendar -->
+            <button class="app-button rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center group" onclick="openCalendarApp()">
+                <div class="text-3xl sm:text-4xl mb-2 sm:mb-4 group-hover:scale-110 transition-transform duration-300">📅</div>
+                <h3 class="text-white font-semibold text-sm sm:text-lg mb-1 sm:mb-2">تقویم</h3>
+                <p class="text-white/70 text-xs sm:text-sm">برنامه‌ریزی روزانه</p>
+            </button>
+
+            <!-- App Button 9 - Chat App -->
+            <button class="app-button rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center group" onclick="openChatApp()">
+                <div class="text-3xl sm:text-4xl mb-2 sm:mb-4 group-hover:scale-110 transition-transform duration-300">💬</div>
+                <h3 class="text-white font-semibold text-sm sm:text-lg mb-1 sm:mb-2">چت و پیام</h3>
+                <p class="text-white/70 text-xs sm:text-sm">ارتباط با دوستان</p>
+            </button>
+
+            <!-- App Button 10 - Settings -->
+            <button class="app-button rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center group" onclick="openSettingsApp()">
+                <div class="text-3xl sm:text-4xl mb-2 sm:mb-4 group-hover:scale-110 transition-transform duration-300">⚙️</div>
+                <h3 class="text-white font-semibold text-sm sm:text-lg mb-1 sm:mb-2">تنظیمات</h3>
+                <p class="text-white/70 text-xs sm:text-sm">شخصی‌سازی</p>
+            </button>
+
+            <!-- App Button 11 - Camera -->
+            <button class="app-button rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center group" onclick="openCameraApp()">
+                <div class="text-3xl sm:text-4xl mb-2 sm:mb-4 group-hover:scale-110 transition-transform duration-300">📷</div>
+                <h3 class="text-white font-semibold text-sm sm:text-lg mb-1 sm:mb-2">دوربین</h3>
+                <p class="text-white/70 text-xs sm:text-sm">عکس و فیلم</p>
+            </button>
+
+            <!-- App Button 12 - Gallery -->
+            <button class="app-button rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center group" onclick="openGalleryApp()">
+                <div class="text-3xl sm:text-4xl mb-2 sm:mb-4 group-hover:scale-110 transition-transform duration-300">🖼️</div>
+                <h3 class="text-white font-semibold text-sm sm:text-lg mb-1 sm:mb-2">گالری</h3>
+                <p class="text-white/70 text-xs sm:text-sm">مشاهده تصاویر</p>
+            </button>
+
+            <!-- App Button 13 - Maps -->
+            <button class="app-button rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center group" onclick="openMapsApp()">
+                <div class="text-3xl sm:text-4xl mb-2 sm:mb-4 group-hover:scale-110 transition-transform duration-300">🗺️</div>
+                <h3 class="text-white font-semibold text-sm sm:text-lg mb-1 sm:mb-2">نقشه</h3>
+                <p class="text-white/70 text-xs sm:text-sm">مسیریابی و مکان</p>
+            </button>
+
+            <!-- App Button 14 - Shopping -->
+            <button class="app-button rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center group" onclick="openShoppingApp()">
+                <div class="text-3xl sm:text-4xl mb-2 sm:mb-4 group-hover:scale-110 transition-transform duration-300">🛒</div>
+                <h3 class="text-white font-semibold text-sm sm:text-lg mb-1 sm:mb-2">خرید</h3>
+                <p class="text-white/70 text-xs sm:text-sm">فروشگاه آنلاین</p>
+            </button>
+
+            <!-- App Button 15 - Games -->
+            <button class="app-button rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center group" onclick="openGamesApp()">
+                <div class="text-3xl sm:text-4xl mb-2 sm:mb-4 group-hover:scale-110 transition-transform duration-300">🎮</div>
+                <h3 class="text-white font-semibold text-sm sm:text-lg mb-1 sm:mb-2">بازی‌ها</h3>
+                <p class="text-white/70 text-xs sm:text-sm">سرگرمی و بازی</p>
+            </button>
+        </div>
+
+        <!-- Feature Section -->
+        <div class="mt-12 sm:mt-16 text-center">
+            <div class="app-button rounded-2xl sm:rounded-3xl p-6 sm:p-8 max-w-4xl mx-auto">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">چرا A Apps را انتخاب کنید؟</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mt-6 sm:mt-8">
+                    <div class="text-center">
+                        <div class="text-2xl sm:text-3xl mb-3 pulse-animation">🚀</div>
+                        <h3 class="text-white font-semibold mb-2">عملکرد سریع</h3>
+                        <p class="text-white/70 text-sm">اپلیکیشن‌های بهینه شده برای سرعت</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl sm:text-3xl mb-3 pulse-animation">🔒</div>
+                        <h3 class="text-white font-semibold mb-2">امن و خصوصی</h3>
+                        <p class="text-white/70 text-sm">حفاظت کامل از اطلاعات شما</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl sm:text-3xl mb-3 pulse-animation">✨</div>
+                        <h3 class="text-white font-semibold mb-2">طراحی زیبا</h3>
+                        <p class="text-white/70 text-sm">رابط کاربری جذاب و کاربردی</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function goBackToApps() {
+            // Remove any app interface
+            const interfaces = ['aiInterface', 'musicInterface', 'taskInterface', 'weatherInterface', 'calcInterface', 'notesInterface', 'fileInterface', 'calendarInterface', 'chatInterface', 'settingsInterface', 'cameraInterface', 'galleryInterface', 'mapsInterface', 'shoppingInterface', 'gamesInterface'];
+            interfaces.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) element.remove();
+            });
+            
+            // Show main page
+            document.querySelector('header').style.display = 'block';
+            document.querySelector('main').style.display = 'block';
+        }
+
+        // AI Assistant App
+        function openAIApp() {
+            document.querySelector('header').style.display = 'none';
+            document.querySelector('main').style.display = 'none';
+            
+            const aiInterface = document.createElement('div');
+            aiInterface.id = 'aiInterface';
+            aiInterface.className = 'h-screen flex flex-col';
+            aiInterface.innerHTML = `
+                <header class="gradient-bg text-white p-4 shadow-lg">
+                    <div class="flex items-center justify-between max-w-4xl mx-auto">
+                        <div class="flex items-center space-x-3">
+                            <button onclick="goBackToApps()" class="hover:bg-white/20 p-2 rounded-lg transition-colors">
+                                ← بازگشت
+                            </button>
+                            <div class="w-8 sm:w-10 h-8 sm:h-10 bg-white/20 rounded-full flex items-center justify-center">
+                                🤖
+                            </div>
+                            <div>
+                                <h1 class="text-lg sm:text-xl font-semibold">دستیار هوشمند</h1>
+                                <p class="text-xs sm:text-sm text-white/80">آنلاین • آماده کمک</p>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <div id="aiChatContainer" class="flex-1 overflow-y-auto p-4 space-y-4 max-w-4xl mx-auto w-full bg-gray-50">
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-sm">
+                            🤖
+                        </div>
+                        <div class="bg-white rounded-2xl rounded-tl-md p-4 shadow-sm max-w-md border">
+                            <p class="text-gray-800">سلام! من دستیار هوش مصنوعی شما هستم. چه کمکی میتونم بهتون بکنم؟</p>
+                            <span class="text-xs text-gray-500 mt-2 block">الان</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border-t bg-white p-4">
+                    <div class="max-w-4xl mx-auto">
+                        <div class="flex items-end space-x-3">
+                            <div class="flex-1 relative">
+                                <textarea 
+                                    id="aiMessageInput" 
+                                    placeholder="پیام خود را اینجا بنویسید..." 
+                                    class="w-full p-3 border border-gray-300 rounded-2xl resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    rows="1"
+                                    onkeypress="handleAIKeyPress(event)"
+                                ></textarea>
+                            </div>
+                            <button 
+                                onclick="sendAIMessage()" 
+                                class="p-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full hover:from-blue-600 hover:to-purple-700 transition-all"
+                            >
+                                ➤
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(aiInterface);
+            setTimeout(() => document.getElementById('aiMessageInput').focus(), 100);
+        }
+
+        function sendAIMessage() {
+            const input = document.getElementById('aiMessageInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                addAIUserMessage(message);
+                input.value = '';
+                setTimeout(() => addAIBotResponse(message), 1000);
+            }
+        }
+
+        function addAIUserMessage(message) {
+            const container = document.getElementById('aiChatContainer');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'flex items-start space-x-3 justify-end';
+            messageDiv.innerHTML = `
+                <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-2xl rounded-tr-md p-3 sm:p-4 shadow-sm max-w-md">
+                    <p class="text-sm sm:text-base">${message}</p>
+                    <span class="text-xs text-blue-100 mt-2 block">الان</span>
+                </div>
+                <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center text-sm">
+                    👤
+                </div>
+            `;
+            container.appendChild(messageDiv);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function addAIBotResponse(userMessage) {
+            const responses = {
+                "سلام": "سلام! خوش اومدید! چه کمکی میتونم بهتون بکنم؟ 👋",
+                "چطوری": "من عالی هستم! شما چطورید؟ چه کاری میتونم براتون انجام بدم؟ 😊",
+                "کمک": "البته! من میتونم در زمینه‌های مختلف کمکتون کنم. چه سوالی دارید؟",
+                "default": "سوال جالبی! من یک دستیار هوش مصنوعی هستم و سعی میکنم بهترین پاسخ رو بهتون بدم. چیز دیگه‌ای میخواید بدونید؟ 🤔"
+            };
+            
+            let response = responses.default;
+            for (let key in responses) {
+                if (userMessage.includes(key)) {
+                    response = responses[key];
+                    break;
+                }
+            }
+            
+            const container = document.getElementById('aiChatContainer');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'flex items-start space-x-3';
+            messageDiv.innerHTML = `
+                <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-sm">
+                    🤖
+                </div>
+                <div class="bg-white rounded-2xl rounded-tl-md p-3 sm:p-4 shadow-sm max-w-md border">
+                    <p class="text-gray-800">${response}</p>
+                    <span class="text-xs text-gray-500 mt-2 block">الان</span>
+                </div>
+            `;
+            container.appendChild(messageDiv);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function handleAIKeyPress(event) {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault();
+                sendAIMessage();
+            }
+        }
+
+        // Music Player App
+        function openMusicApp() {
+            document.querySelector('header').style.display = 'none';
+            document.querySelector('main').style.display = 'none';
+            
+            const musicInterface = document.createElement('div');
+            musicInterface.id = 'musicInterface';
+            musicInterface.className = 'h-screen flex flex-col bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900';
+            musicInterface.innerHTML = `
+                <header class="bg-black/20 text-white p-4 backdrop-blur-sm">
+                    <div class="flex items-center justify-between max-w-6xl mx-auto">
+                        <button onclick="goBackToApps()" class="hover:bg-white/20 p-2 rounded-lg transition-colors">
+                            ← بازگشت
+                        </button>
+                        <h1 class="text-lg sm:text-xl font-semibold">🎵 موزیک پلیر</h1>
+                        <button class="bg-white/20 px-3 py-1 rounded-lg hover:bg-white/30 transition-colors text-sm">🔀 تصادفی</button>
+                    </div>
+                </header>
+                
+                <div class="flex-1 flex flex-col items-center justify-center text-white p-6">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 max-w-md w-full">
+                        <div class="text-center mb-6">
+                            <div class="w-48 h-48 bg-gradient-to-br from-pink-500 to-purple-600 rounded-2xl mx-auto mb-4 flex items-center justify-center text-6xl">🎵</div>
+                            <h2 class="text-2xl font-bold mb-2">آهنگ فوق‌العاده</h2>
+                            <p class="text-white/70">هنرمند بزرگ</p>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <div class="flex justify-between text-sm text-white/70 mb-2">
+                                <span>0:00</span>
+                                <span>3:45</span>
+                            </div>
+                            <div class="w-full bg-white/20 rounded-full h-2">
+                                <div class="bg-white h-2 rounded-full transition-all duration-300" style="width: 30%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-center space-x-6">
+                            <button class="text-3xl hover:scale-110 transition-transform">⏮️</button>
+                            <button onclick="togglePlay(this)" class="text-5xl hover:scale-110 transition-transform">▶️</button>
+                            <button class="text-3xl hover:scale-110 transition-transform">⏭️</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(musicInterface);
+        }
+
+        function togglePlay(button) {
+            if (button.textContent === '▶️') {
+                button.textContent = '⏸️';
+            } else {
+                button.textContent = '▶️';
+            }
+        }
+
+        // Chat App
+        function openChatApp() {
+            document.querySelector('header').style.display = 'none';
+            document.querySelector('main').style.display = 'none';
+            
+            const chatInterface = document.createElement('div');
+            chatInterface.id = 'chatInterface';
+            chatInterface.className = 'h-screen flex flex-col bg-gradient-to-br from-green-500 to-teal-600';
+            chatInterface.innerHTML = `
+                <header class="bg-white/20 text-white p-4 backdrop-blur-sm">
+                    <div class="flex items-center justify-between max-w-4xl mx-auto">
+                        <button onclick="goBackToApps()" class="hover:bg-white/20 p-2 rounded-lg transition-colors">
+                            ← بازگشت
+                        </button>
+                        <h1 class="text-lg sm:text-xl font-semibold">💬 چت و پیام</h1>
+                        <button onclick="findUsers()" class="bg-white/20 px-4 py-2 rounded-lg hover:bg-white/30 transition-colors text-sm">یافتن کاربران</button>
+                    </div>
+                </header>
+                
+                <div class="flex-1 flex max-w-4xl mx-auto w-full">
+                    <div class="w-1/3 bg-white/10 backdrop-blur-sm p-4">
+                        <h3 class="text-white font-semibold mb-4">چت‌ها</h3>
+                        <div id="chatList" class="space-y-3">
+                            <div class="text-white/70 text-center py-8">
+                                <div class="text-4xl mb-2">💬</div>
+                                <p class="text-sm">هنوز چتی شروع نشده</p>
+                                <p class="text-xs mt-2">از دکمه "یافتن کاربران" استفاده کنید</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex-1 bg-white flex flex-col">
+                        <div class="flex-1 flex items-center justify-center text-gray-500">
+                            <div class="text-center">
+                                <div class="text-6xl mb-4">💬</div>
+                                <h3 class="text-xl font-semibold mb-2">یک چت انتخاب کنید</h3>
+                                <p class="text-sm">از دکمه "یافتن کاربران" برای شروع چت استفاده کنید</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(chatInterface);
+        }
+
+        function findUsers() {
+            const sampleUsers = [
+                { id: 'user_1', name: 'علی احمدی', phone: '+98 912 345 6789', avatar: 'bg-blue-500' },
+                { id: 'user_2', name: 'مریم محمدی', phone: '+98 912 345 6790', avatar: 'bg-pink-500' },
+                { id: 'user_3', name: 'حسین رضایی', phone: '+98 912 345 6791', avatar: 'bg-green-500' }
+            ];
+            
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4';
+            modal.innerHTML = `
+                <div class="bg-white rounded-2xl p-6 max-w-md w-full">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold">یافتن کاربران</h3>
+                        <button onclick="this.closest('.fixed').remove()" class="text-gray-500 hover:text-gray-700">✕</button>
+                    </div>
+                    <div class="space-y-3">
+                        ${sampleUsers.map(user => `
+                            <div onclick="startChat('${user.id}', '${user.name}', '${user.avatar}'); this.closest('.fixed').remove();" class="flex items-center space-x-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                                <div class="w-10 h-10 ${user.avatar} rounded-full flex items-center justify-center text-white">👤</div>
+                                <div class="flex-1">
+                                    <div class="font-semibold">${user.name}</div>
+                                    <div class="text-sm text-gray-500">${user.phone}</div>
+                                </div>
+                                <button class="bg-green-500 text-white px-3 py-1 rounded text-sm">چت</button>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        function startChat(userId, userName, userAvatar) {
+            // Update chat interface to show active chat
+            const chatInterface = document.getElementById('chatInterface');
+            chatInterface.innerHTML = `
+                <header class="bg-white/20 text-white p-4 backdrop-blur-sm">
+                    <div class="flex items-center justify-between max-w-4xl mx-auto">
+                        <button onclick="goBackToApps()" class="hover:bg-white/20 p-2 rounded-lg transition-colors">
+                            ← بازگشت
+                        </button>
+                        <h1 class="text-lg sm:text-xl font-semibold">💬 چت و پیام</h1>
+                        <button onclick="findUsers()" class="bg-white/20 px-4 py-2 rounded-lg hover:bg-white/30 transition-colors text-sm">یافتن کاربران</button>
+                    </div>
+                </header>
+                
+                <div class="flex-1 flex max-w-4xl mx-auto w-full">
+                    <div class="w-1/3 bg-white/10 backdrop-blur-sm p-4">
+                        <h3 class="text-white font-semibold mb-4">چت‌ها</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-3 p-3 bg-white/20 rounded-lg">
+                                <div class="w-10 h-10 ${userAvatar} rounded-full flex items-center justify-center text-white">👤</div>
+                                <div class="flex-1">
+                                    <div class="text-white font-semibold">${userName}</div>
+                                    <div class="text-white/70 text-sm">شروع چت...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex-1 bg-white flex flex-col">
+                        <div class="p-4 border-b flex items-center space-x-3">
+                            <div class="w-10 h-10 ${userAvatar} rounded-full flex items-center justify-center text-white">👤</div>
+                            <div>
+                                <div class="font-semibold">${userName}</div>
+                                <div class="text-sm text-green-500">آنلاین</div>
+                            </div>
+                        </div>
+                        
+                        <div id="chatMessages" class="flex-1 p-4 space-y-4 overflow-y-auto bg-gray-50">
+                            <div class="text-center text-gray-500 py-4">
+                                <div class="text-4xl mb-2">👋</div>
+                                <p>چت با ${userName} شروع شد!</p>
+                            </div>
+                        </div>
+                        
+                        <div class="p-4 border-t bg-white">
+                            <div class="flex items-center space-x-3">
+                                <input id="chatInput" type="text" placeholder="پیام خود را بنویسید..." class="flex-1 p-3 border rounded-full focus:outline-none focus:ring-2 focus:ring-green-500" onkeypress="handleChatKeyPress(event, '${userId}', '${userName}')">
+                                <button onclick="sendMessage('${userId}', '${userName}')" class="bg-green-500 text-white p-3 rounded-full hover:bg-green-600">➤</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function sendMessage(userId, userName) {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                const messagesContainer = document.getElementById('chatMessages');
+                const time = new Date().toLocaleTimeString('fa-IR', {hour: '2-digit', minute:'2-digit'});
+                
+                // Add user message
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'flex justify-end';
+                messageDiv.innerHTML = `
+                    <div class="bg-green-500 text-white rounded-2xl p-3 max-w-xs">
+                        <p>${message}</p>
+                        <span class="text-xs text-green-100 mt-1 block">${time}</span>
+                    </div>
+                `;
+                messagesContainer.appendChild(messageDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                
+                input.value = '';
+                
+                // Simulate response
+                setTimeout(() => {
+                    const responses = ["سلام! چطوری؟", "جالبه!", "ممنون که گفتی", "واقعاً؟"];
+                    const response = responses[Math.floor(Math.random() * responses.length)];
+                    
+                    const responseDiv = document.createElement('div');
+                    responseDiv.className = 'flex';
+                    responseDiv.innerHTML = `
+                        <div class="bg-white rounded-2xl p-3 max-w-xs shadow-sm">
+                            <p>${response}</p>
+                            <span class="text-xs text-gray-500 mt-1 block">${time}</span>
+                        </div>
+                    `;
+                    messagesContainer.appendChild(responseDiv);
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                }, 1000);
+            }
+        }
+
+        function handleChatKeyPress(event, userId, userName) {
+            if (event.key === 'Enter') {
+                sendMessage(userId, userName);
+            }
+        }
+
+        // Simple implementations for other apps
+        function openTaskApp() {
+            showSimpleApp('taskInterface', '✅ مدیریت وظایف', 'مدیریت و سازماندهی وظایف روزانه شما');
+        }
+
+        function openWeatherApp() {
+            showSimpleApp('weatherInterface', '🌤️ آب و هوا', 'پیش‌بینی آب و هوا و اطلاعات جوی');
+        }
+
+        function openCalculatorApp() {
+            showSimpleApp('calcInterface', '🧮 ماشین حساب', 'انجام محاسبات ریاضی و علمی');
+        }
+
+        function openNotesApp() {
+            showSimpleApp('notesInterface', '📝 یادداشت', 'نوشتن و ذخیره یادداشت‌های مهم');
+        }
+
+        function openFileApp() {
+            showSimpleApp('fileInterface', '📁 مدیر فایل', 'مدیریت و سازماندهی فایل‌ها');
+        }
+
+        function openCalendarApp() {
+            showSimpleApp('calendarInterface', '📅 تقویم', 'برنامه‌ریزی و مدیریت زمان');
+        }
+
+        function openSettingsApp() {
+            showSimpleApp('settingsInterface', '⚙️ تنظیمات', 'شخصی‌سازی و تنظیمات سیستم');
+        }
+
+        function openCameraApp() {
+            showSimpleApp('cameraInterface', '📷 دوربین', 'گرفتن عکس و فیلم با کیفیت بالا');
+        }
+
+        function openGalleryApp() {
+            showSimpleApp('galleryInterface', '🖼️ گالری', 'مشاهده و مدیریت تصاویر و ویدیوها');
+        }
+
+        function openMapsApp() {
+            showSimpleApp('mapsInterface', '🗺️ نقشه', 'مسیریابی و یافتن مکان‌های مختلف');
+        }
+
+        function openShoppingApp() {
+            showSimpleApp('shoppingInterface', '🛒 خرید', 'خرید آنلاین محصولات مختلف');
+        }
+
+        function openGamesApp() {
+            showSimpleApp('gamesInterface', '🎮 بازی‌ها', 'مجموعه‌ای از بازی‌های سرگرم‌کننده');
+        }
+
+        function showSimpleApp(id, title, description) {
+            document.querySelector('header').style.display = 'none';
+            document.querySelector('main').style.display = 'none';
+            
+            const appInterface = document.createElement('div');
+            appInterface.id = id;
+            appInterface.className = 'h-screen flex flex-col bg-gradient-to-br from-indigo-500 to-purple-600';
+            appInterface.innerHTML = `
+                <header class="bg-white/20 text-white p-4 backdrop-blur-sm">
+                    <div class="flex items-center justify-between max-w-4xl mx-auto">
+                        <button onclick="goBackToApps()" class="hover:bg-white/20 p-2 rounded-lg transition-colors">
+                            ← بازگشت
+                        </button>
+                        <h1 class="text-lg sm:text-xl font-semibold">${title}</h1>
+                        <div></div>
+                    </div>
+                </header>
+                
+                <div class="flex-1 flex items-center justify-center p-6">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 text-center text-white max-w-md">
+                        <div class="text-6xl mb-6">${title.split(' ')[0]}</div>
+                        <h2 class="text-2xl font-bold mb-4">${title}</h2>
+                        <p class="text-white/80 mb-6">${description}</p>
+                        <div class="text-sm text-white/60">این اپلیکیشن به زودی راه‌اندازی خواهد شد</div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(appInterface);
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97e84df2f4719938',t:'MTc1Nzc3MzQyNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
